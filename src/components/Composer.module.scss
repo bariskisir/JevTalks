@@ -1,0 +1,118 @@
+.composer {
+  width: min(832px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0 auto;
+  padding: 13px 14px 11px;
+  border: 1px solid var(--composer-border);
+  border-radius: 17px;
+  background: var(--surface);
+  box-shadow: 0 12px 28px #00000025;
+
+  &:focus-within {
+    border-color: #8d83ff88;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 47px;
+    max-height: 160px;
+    padding: 3px 2px;
+    overflow-y: auto;
+    border: 0;
+    outline: 0;
+    color: var(--text);
+    background: transparent;
+    line-height: 1.55;
+    resize: none;
+
+    &::placeholder { color: var(--text-subtle); }
+  }
+}
+
+.bottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.recheckOption {
+  min-width: 0;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--text-muted);
+  font-size: 12px;
+  cursor: pointer;
+
+  select {
+    max-width: min(240px, calc(100vw - 145px));
+    min-height: 34px;
+    padding: 5px 8px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-muted);
+    background: var(--field-background);
+    font: inherit;
+  }
+}
+
+.sendButton,
+.stopButton {
+  flex-shrink: 0;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 11px;
+  border: 0;
+  border-radius: 9px;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  transition: background-color 150ms ease, transform 150ms ease;
+
+  &:hover:not(:disabled) { transform: translateY(-1px); }
+
+  svg { width: 15px; height: 15px; }
+}
+
+.sendButton {
+  background: var(--accent-strong);
+
+  &:hover:not(:disabled) { background: #8c80ff; }
+
+  &:disabled { color: var(--text-subtle); background: var(--disabled-background); }
+}
+
+.stopButton {
+  background: var(--muted-button);
+
+  &:hover { background: var(--muted-button-hover); }
+}
+
+.stopIcon {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: currentColor;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .composer { padding: 10px 11px 9px; }
+  .composer textarea { font-size: 16px; }
+  .recheckOption { font-size: 11px; }
+}

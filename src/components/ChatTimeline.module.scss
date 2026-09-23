@@ -1,0 +1,142 @@
+.timeline {
+  min-height: 0;
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: var(--scrollbar) transparent;
+}
+
+.messages {
+  width: min(880px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin: 0 auto;
+  padding: 28px 24px 42px;
+}
+
+.messages.expanded { width: 100%; }
+
+.message {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  min-width: 0;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  color: var(--text-muted);
+  background: var(--surface-raised);
+}
+
+.assistant .avatar {
+  border-color: #8d83ff55;
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.messageBody {
+  min-width: 0;
+  flex: 1;
+  padding-top: 1px;
+}
+
+.messageName {
+  margin-bottom: 5px;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.content {
+  color: var(--content-text);
+  font-size: 15px;
+  line-height: 1.72;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  user-select: text;
+}
+
+.user .content {
+  width: fit-content;
+  max-width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 4px 13px 13px 13px;
+  background: var(--surface);
+}
+
+.generating,
+.mutedStatus {
+  margin-top: 9px;
+  color: var(--text-subtle);
+  font-size: 12px;
+}
+
+.generating {
+  color: var(--accent);
+  animation: breathe 1.3s ease-in-out infinite alternate;
+}
+
+.cursor {
+  width: 2px;
+  height: 1.15em;
+  display: inline-block;
+  margin-left: 2px;
+  background: var(--accent);
+  vertical-align: -0.2em;
+  animation: breathe 750ms ease-in-out infinite alternate;
+}
+
+.error {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  color: var(--error);
+  font-size: 12px;
+
+  button {
+    padding: 3px 8px;
+    border: 1px solid #ff8d9255;
+    border-radius: 6px;
+    color: var(--error);
+    background: #ff8d9210;
+    font-weight: 600;
+  }
+}
+
+@keyframes breathe {
+  to { opacity: 0.42; }
+}
+
+@media (max-width: 600px) {
+  .messages {
+    gap: 23px;
+    padding: 22px 15px 34px;
+  }
+
+  .message {
+    gap: 10px;
+  }
+
+  .avatar {
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+    border-radius: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .generating,
+  .cursor { animation: none; }
+}

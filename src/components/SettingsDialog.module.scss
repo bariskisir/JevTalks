@@ -1,0 +1,275 @@
+.overlay {
+  position: fixed;
+  z-index: 40;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: var(--overlay);
+  backdrop-filter: blur(7px);
+}
+
+.dialog {
+  width: min(680px, 100%);
+  height: 90dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.heading {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 22px;
+  border-bottom: 1px solid var(--border);
+
+  h2 { margin: 0; font-size: 18px; }
+  button {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    color: var(--text-muted);
+    background: transparent;
+
+    &:hover { color: var(--text); background: var(--surface-raised); }
+  }
+}
+
+.layout { min-height: 0; display: flex; flex: 1; }
+
+.navigation {
+  width: 168px;
+  flex: 0 0 168px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 17px 10px;
+  border-right: 1px solid var(--border);
+  background: var(--sidebar-background);
+
+  button {
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 12px;
+    border: 0;
+    border-radius: 8px;
+    color: var(--text-muted);
+    background: transparent;
+    text-align: left;
+    font-size: 13px;
+
+    &:hover { color: var(--text); background: var(--sidebar-hover); }
+  }
+
+  .active { color: var(--accent); background: var(--accent-soft); font-weight: 650; }
+}
+
+.panel {
+  min-width: 0;
+  flex: 1;
+  overflow-y: auto;
+  padding: 26px;
+
+  h3 { margin: 0 0 5px; font-size: 17px; }
+  p { margin: 0 0 23px; color: var(--text-muted); font-size: 13px; }
+  form { display: flex; flex-direction: column; }
+  label { margin-bottom: 7px; font-size: 12px; font-weight: 650; }
+}
+
+.keyInput {
+  display: flex;
+  gap: 7px;
+
+  input {
+    width: 100%;
+    min-width: 0;
+    min-height: 42px;
+    flex: 1;
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    outline: 0;
+    color: var(--text);
+    background: var(--field-background);
+    font-size: 13px;
+
+    &:focus { border-color: var(--accent); }
+  }
+
+  button {
+    width: 42px;
+    flex: 0 0 42px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    color: var(--text-muted);
+    background: var(--surface-raised);
+  }
+}
+
+.keyActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+  margin-top: 14px;
+
+  button { min-height: 38px; padding: 7px 13px; border-radius: 9px; font-size: 12px; font-weight: 650; }
+}
+
+.removeButton { border: 1px solid var(--border); color: var(--text-muted); background: var(--surface); }
+.saveButton { border: 0; color: #fff; background: var(--accent-strong); }
+.saveButton:disabled { color: var(--text-subtle); background: var(--disabled-background); }
+.error { margin-top: 9px; color: var(--error); font-size: 12px; }
+
+.promptsSection {
+  display: flex;
+  flex-direction: column;
+
+  label { margin-top: 13px; }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px 11px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: 0;
+    color: var(--text);
+    background: var(--field-background);
+    font: inherit;
+    font-size: 13px;
+
+    &:focus { border-color: var(--accent); }
+    &:read-only { color: var(--text-muted); }
+  }
+
+  textarea { min-height: 100px; line-height: 1.5; resize: vertical; }
+  .saveButton { align-self: flex-end; margin-top: 17px; padding: 10px 13px; border-radius: 8px; }
+}
+
+.promptActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+
+  button {
+    padding: 8px 11px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    background: var(--surface-raised);
+    font-size: 12px;
+  }
+}
+
+.themeOptions {
+  display: flex;
+  gap: 11px;
+
+  button {
+    min-width: 110px;
+    min-height: 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    color: var(--text-muted);
+    background: var(--surface-raised);
+    font-size: 12px;
+
+    &[aria-pressed='true'] { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+  }
+}
+
+.aboutHero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  h3 { margin: 11px 0 2px; }
+  p { margin: 0; }
+}
+
+.aboutIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+}
+
+.version {
+  margin-top: 11px;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  color: var(--text-subtle);
+  font-size: 11px;
+}
+
+.aboutDetails {
+  margin-top: 22px;
+  padding-top: 17px;
+  border-top: 1px solid var(--border);
+
+  p { margin-bottom: 11px; }
+}
+
+.aboutLinkRow {
+  min-height: 57px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--border);
+
+  div { display: flex; flex-direction: column; gap: 1px; }
+  strong { color: var(--text); font-size: 12px; }
+  span { color: var(--text-muted); font-size: 12px; }
+  a {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    color: var(--text-muted);
+
+    &:hover { color: var(--accent); background: var(--accent-soft); }
+  }
+}
+
+@media (max-width: 600px) {
+  .dialog { height: 90dvh; }
+  .heading { min-height: 56px; padding: 0 17px; }
+  .layout { flex-direction: column; }
+  .navigation {
+    width: 100%;
+    flex: 0 0 auto;
+    flex-direction: row;
+    padding: 9px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+
+    button { justify-content: center; flex: 1; gap: 4px; padding: 7px 3px; font-size: 10px; }
+    svg { width: 15px; height: 15px; }
+  }
+  .panel { padding: 21px 18px; }
+  .keyInput input { font-size: 16px; }
+}
